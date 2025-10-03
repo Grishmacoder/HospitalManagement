@@ -2,15 +2,16 @@ package com.testproject.hospitalManagement.entity;
 
 import com.testproject.hospitalManagement.entity.type.BloodGroupType;
 import jakarta.persistence.*;
-import lombok.ToString;
+import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
-@ToString
+
 @Entity
+@Builder
 @Table(
         indexes = {
                 @Index(name = "idx_patient_birt_date", columnList = "birthDate")
@@ -38,6 +39,7 @@ public class Patient {
     private LocalDateTime createdAt;
 
     @OneToOne
+    @Setter
     private Insurance insurance;
 
     @OneToMany(mappedBy = "patient")
