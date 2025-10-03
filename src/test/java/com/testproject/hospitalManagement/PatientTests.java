@@ -1,11 +1,13 @@
 package com.testproject.hospitalManagement;
 
+import com.testproject.hospitalManagement.dto.BloodGroupCntResponseEntity;
 import com.testproject.hospitalManagement.entity.Patient;
 import com.testproject.hospitalManagement.repository.PatientRepository;
 import com.testproject.hospitalManagement.serive.PatientService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
 import java.util.Objects;
@@ -34,12 +36,13 @@ public class PatientTests {
 //        Patient patient = patientRepository.getPatientByName("Grishma Patel");
 //        System.out.println(patient);
 
-//        List<Object[]> bloodGroupList = patientRepository.countEachBloodGrpType();
-//        for(Object[] obj : bloodGroupList){
-//            System.out.println(obj[0] +" "+ obj[1]);
-//
-//        }
-        int rowsUpdated = patientRepository.updateNameWithId("Diya Patel", 3L);
-        System.out.println(rowsUpdated);
+
+        List<BloodGroupCntResponseEntity> bloodGroupList = patientRepository.countEachBloodGrpType();
+        for(BloodGroupCntResponseEntity res: bloodGroupList){
+            System.out.println(res);
+        }
+
+//        int rowsUpdated = patientRepository.updateNameWithId("Diya Patel", 3L);
+//        System.out.println(rowsUpdated);
     }
 }
