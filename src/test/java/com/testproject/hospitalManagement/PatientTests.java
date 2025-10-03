@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.List;
+import java.util.Objects;
 
 @SpringBootTest
 public class PatientTests {
@@ -20,6 +21,9 @@ public class PatientTests {
     public void testPatientRepo(){
         List<Patient> patientList = patientRepository.findAll();
         System.out.println(patientList);
+
+        List<Patient> plist = patientRepository.findAllPatient();
+        System.out.println(plist);
     }
 
     @Autowired
@@ -27,7 +31,15 @@ public class PatientTests {
 
     @Test
     public void testTransactionMethods(){
-        Patient p = patientService.getPatientById(1);
-        System.out.println(p);
+//        Patient patient = patientRepository.getPatientByName("Grishma Patel");
+//        System.out.println(patient);
+
+//        List<Object[]> bloodGroupList = patientRepository.countEachBloodGrpType();
+//        for(Object[] obj : bloodGroupList){
+//            System.out.println(obj[0] +" "+ obj[1]);
+//
+//        }
+        int rowsUpdated = patientRepository.updateNameWithId("Diya Patel", 3L);
+        System.out.println(rowsUpdated);
     }
 }

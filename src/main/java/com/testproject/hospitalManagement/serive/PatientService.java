@@ -24,4 +24,6 @@ public class PatientService {
         Patient p =  patientRepository.findById(id).orElseThrow();
         return p;
     }
+
+
 }
