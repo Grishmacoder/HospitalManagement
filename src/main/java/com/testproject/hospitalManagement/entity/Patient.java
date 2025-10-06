@@ -11,12 +11,15 @@ import java.util.List;
 
 
 @Entity
+@Setter
 @Builder
 @Table(
         indexes = {
                 @Index(name = "idx_patient_birt_date", columnList = "birthDate")
         }
 )
+@NoArgsConstructor
+@AllArgsConstructor
 public class Patient {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -38,8 +41,9 @@ public class Patient {
     @CreationTimestamp
     private LocalDateTime createdAt;
 
-    @OneToOne
-    @Setter
+
+    @OneToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
+    @JoinColumn(name = "insurance_id")
     private Insurance insurance;
 
     @OneToMany(mappedBy = "patient")
