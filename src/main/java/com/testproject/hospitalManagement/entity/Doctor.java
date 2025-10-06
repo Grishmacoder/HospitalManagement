@@ -12,6 +12,7 @@ import java.util.Set;
 @Builder
 @AllArgsConstructor
 @ToString
+@NoArgsConstructor
 public class Doctor {
 
     @Id

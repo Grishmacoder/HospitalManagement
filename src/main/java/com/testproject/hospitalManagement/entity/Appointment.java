@@ -1,10 +1,7 @@
 package com.testproject.hospitalManagement.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -14,11 +11,13 @@ import java.time.LocalDateTime;
 @Setter
 @Getter
 @ToString
+@Builder
+@NoArgsConstructor
 public class Appointment {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
     @Column(nullable = false)
     private LocalDateTime appointmentTime;
@@ -27,7 +26,7 @@ public class Appointment {
     private String reason;
 
     @ManyToOne
-    @JoinColumn(nullable = false)
+    @JoinColumn(name ="patiend_id",nullable = false)
     private Patient patient;
 
     @ManyToOne
