@@ -2,16 +2,14 @@ package com.testproject.hospitalManagement.repository;
 
 import com.testproject.hospitalManagement.dto.BloodGroupCntResponseEntity;
 import com.testproject.hospitalManagement.entity.Patient;
-import com.testproject.hospitalManagement.entity.type.BloodGroupType;
 import jakarta.transaction.Transactional;
-import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
-import java.awt.print.Pageable;
 import java.util.List;
 
 @Repository
@@ -23,7 +21,7 @@ public interface PatientRepository extends JpaRepository<Patient, Long> {
     List<BloodGroupCntResponseEntity> countEachBloodGrpType();
 
     @Query(value = "select * from patient", nativeQuery = true)
-    List<Patient> findAllPatient();
+    List<Patient> findAllPatient(PageRequest pageRequest);
 
     @Modifying
     @Transactional
