@@ -24,32 +24,34 @@ public class PatientTests {
 
 
     @Test
-    public void testPatientRepo(){
-        Page<Patient> patientList = patientRepository.findAll(PageRequest.of(0,2));
-        patientList.getContent().forEach(System.out::println);
+    public void testPatientRepo() {
+//        Page<Patient> patientList = patientRepository.findAll(PageRequest.of(0, 2));
+//        patientList.getContent().forEach(System.out::println);
 
-//        List<Patient> plist = patientRepository.findAllPatient();
-//        for(Patient p : plist){
+        List<Patient> plist = patientRepository.findPatientWithApp();
+//        for (Patient p : plist) {
 //            System.out.println(p);
 //        }
+        System.out.println(plist);
+    }
 
     }
 
-    @Autowired
-    private PatientService patientService;
-
-    @Test
-    public void testTransactionMethods(){
-//        Patient patient = patientRepository.getPatientByName("Grishma Patel");
-//        System.out.println(patient);
-
-
-        List<BloodGroupCntResponseEntity> bloodGroupList = patientRepository.countEachBloodGrpType();
-        for(BloodGroupCntResponseEntity res: bloodGroupList){
-            System.out.println(res);
-        }
+//    @Autowired
+//    private PatientService patientService;
+//
+//    @Test
+//    public void testTransactionMethods(){
+////        Patient patient = patientRepository.getPatientByName("Grishma Patel");
+////        System.out.println(patient);
+//
+//
+//        List<BloodGroupCntResponseEntity> bloodGroupList = patientRepository.countEachBloodGrpType();
+//        for(BloodGroupCntResponseEntity res: bloodGroupList){
+//            System.out.println(res);
+//        }
 
 //        int rowsUpdated = patientRepository.updateNameWithId("Diya Patel", 3L);
 //        System.out.println(rowsUpdated);
-    }
-}
+//    }
+//}

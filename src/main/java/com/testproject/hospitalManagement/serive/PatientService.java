@@ -1,7 +1,9 @@
 package com.testproject.hospitalManagement.serive;
 
+import com.testproject.hospitalManagement.entity.Appointment;
 import com.testproject.hospitalManagement.entity.Patient;
 import com.testproject.hospitalManagement.repository.PatientRepository;
+import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,5 +27,12 @@ public class PatientService {
         return p;
     }
 
+    @Transactional
+    public void deletePatientById(Long patientId){
+        if(!patientRepository.existsById(patientId)){
+            throw new EntityNotFoundException("Patient not found");
+        }
+        patientRepository.deleteById(patientId);
 
+    }
 }

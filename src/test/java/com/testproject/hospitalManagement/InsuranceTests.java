@@ -18,29 +18,22 @@ public class InsuranceTests {
     @Autowired
     private InsuranceService insuranceService;
 
-    @Autowired
-    private ApppointmentService apppointmentService;
+
 
     @Test
     public void testInsurance(){
         Insurance insurance = Insurance.builder()
-                .policyNumber("SunLife_1234")
+                .policyNumber("SunLife_12345")
                 .provider("SunLife")
                 .validUntil(LocalDate.of(2030,12,31))
                 .build();
 
         Patient patient = insuranceService.assignInsuranceToPatient(insurance, 1l);
         System.out.println(patient);
+
+        var removeIns = insuranceService.disassociateInsurance(patient.getId());
+        System.out.println(removeIns);
     }
 
-    @Test
-    public void testAPoointment(){
-        Appointment appointment = Appointment.builder()
-                .appointmentTime(LocalDateTime.of(2025,11,17,14,00))
-                .reason("Cancer")
-                .build();
-        var newApp = apppointmentService.createNewAppointment(appointment,1l,2l);
-        System.out.println(newApp);
 
-    }
 }

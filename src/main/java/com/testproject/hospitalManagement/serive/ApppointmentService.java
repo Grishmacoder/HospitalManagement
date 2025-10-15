@@ -30,9 +30,20 @@ public class ApppointmentService {
         appointment.setPatient(patient);
         appointment.setDoctor(doctor);
 
-        patient.getAppointments().add(appointment);
+        patient.getAppointments().add(appointment); //bidirectional consistency
 
 
         return appointmentRepository.save(appointment);
     }
+    @Transactional
+    public Appointment reassignAppointment(Long appointmentId, Long doctorId){
+        Appointment appointment = appointmentRepository.findById(appointmentId).orElseThrow();
+        Doctor doctor = doctorRepository.findById(doctorId).orElseThrow();
+
+        appointment.setDoctor(doctor);
+
+        return appointment;
+    }
+
+
 }
