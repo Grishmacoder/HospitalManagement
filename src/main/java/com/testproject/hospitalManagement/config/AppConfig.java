@@ -3,6 +3,8 @@ package com.testproject.hospitalManagement.config;
 import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -23,18 +25,23 @@ public class AppConfig {
         return new BCryptPasswordEncoder();
     }
 
-    @Bean
-    UserDetailsService userDetailService(){
-        UserDetails user1 = User.withUsername("admin")
-                .password(passwordEncoder().encode("pass"))
-                .roles("ADMIN")
-                .build();
+//    @Bean
+//    public AuthenticationManager authenticationManager(AuthenticationConfiguration configuration) throws Exception{
+//        return configuration.getAuthenticationManager();
+//    }
 
-        UserDetails user2 = User.withUsername("patient")
-                .password(passwordEncoder().encode("pass"))
-                .roles("PATIENT")
-                .build();
-
-        return new InMemoryUserDetailsManager(user1, user2);
-    }
+//    @Bean
+//    UserDetailsService userDetailService(){
+//        UserDetails user1 = User.withUsername("admin")
+//                .password(passwordEncoder().encode("pass"))
+//                .roles("ADMIN")
+//                .build();
+//
+//        UserDetails user2 = User.withUsername("patient")
+//                .password(passwordEncoder().encode("pass"))
+//                .roles("PATIENT")
+//                .build();
+//
+//        return new InMemoryUserDetailsManager(user1, user2);
+//    }
 }

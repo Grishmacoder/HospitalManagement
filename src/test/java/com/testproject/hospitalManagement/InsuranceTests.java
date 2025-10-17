@@ -18,8 +18,6 @@ public class InsuranceTests {
     @Autowired
     private InsuranceService insuranceService;
 
-
-
     @Test
     public void testInsurance(){
         Insurance insurance = Insurance.builder()
